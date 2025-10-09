@@ -1,20 +1,35 @@
 class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) {
-        int pos = 0, neg = 1;
-        int n = nums.size();
-        vector<int> ans(n);
-        for (int i = 0; i < n; i++) {
-            if (nums[i] > 0) {
-                ans[pos] = nums[i];  // place positive at even index
-                pos += 2;
-            } else {
-                ans[neg] = nums[i];  // place negative at odd index
-                neg += 2;
+
+        queue<int> pos;
+        queue<int> neg;
+
+        for(auto num : nums){
+            if(num/abs(num) == 1 ){ // positive
+
+                pos.push(num);
+
+            }
+            if(num/abs(num) == -1 ){ // positive
+
+                neg.push(num);
+
             }
         }
-        return ans;
 
+        vector<int> ans;
+
+        while(!neg.empty()){
+
+
+            ans.push_back(pos.front());  //begin with a positive integrer
+            pos.pop();
+            ans.push_back(neg.front());
+            neg.pop();
+        }
+
+        return ans;
         
     }
 };
