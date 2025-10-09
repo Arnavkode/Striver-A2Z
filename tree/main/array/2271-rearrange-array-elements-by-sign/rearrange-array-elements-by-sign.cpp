@@ -11,7 +11,7 @@ public:
                 pos.push(num);
 
             }
-            if(num/abs(num) == -1 ){ // positive
+            if(num/abs(num) == -1 ){ // negative
 
                 neg.push(num);
 
