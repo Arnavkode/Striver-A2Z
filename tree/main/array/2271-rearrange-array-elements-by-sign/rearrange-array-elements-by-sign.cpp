@@ -2,31 +2,31 @@ class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) {
 
-        queue<int> pos;
-        queue<int> neg;
+        vector<int> pos;
+        vector<int> neg;
 
         for(auto num : nums){
             if(num/abs(num) == 1 ){ // positive
 
-                pos.push(num);
+                pos.push_back(num);
 
             }
             if(num/abs(num) == -1 ){ // negative
 
-                neg.push(num);
+                neg.push_back(num);
 
             }
         }
 
         vector<int> ans;
 
-        while(!neg.empty()){
+        for(int i = 0; i<pos.size(); i++){
 
 
-            ans.push_back(pos.front());  //begin with a positive integrer
-            pos.pop();
-            ans.push_back(neg.front());
-            neg.pop();
+            ans.push_back(pos[i]);  //begin with a positive integrer
+        
+            ans.push_back(neg[i]);
+            
         }
 
         return ans;
