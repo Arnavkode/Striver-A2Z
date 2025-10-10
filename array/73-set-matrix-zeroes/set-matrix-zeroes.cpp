@@ -69,4 +69,7 @@ public:
 //  that would lessen it down to O(m+n)
 
 
-// if i,j found 0 make the first row/column = 0, then scan it again andif 0 found in a row/column in the first iteration then zero the entire row/column
+// if i,j found 0 make the first row/column = 0, then scan it again andif 0 found in a row/column 
+// in the first iteration then zero the entire row/column
+// since if the zero pehle se tha then that first row and column ko bhi zero karna padega
+// so we use a flag is there eexisted a zero ina  row or column before and if yes we xero the entire row and column
