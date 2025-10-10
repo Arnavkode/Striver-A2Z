@@ -26,3 +26,8 @@ public:
 // sorting takes O(1)
 // then apply two pointer?
 // maintain a longest counter
+
+
+// arrays edge cases:
+// 1. the array can be empty
+// 2. the array could have a single element
