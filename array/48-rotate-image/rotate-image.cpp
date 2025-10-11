@@ -6,17 +6,25 @@ public:
 
         // Step 1: **Transpose** the matrix
         // Swap elements across the main diagonal
-        for (int i = 0; i < n; ++i) {
-            for (int j = i + 1; j < n; ++j) {
-                std::swap(matrix[i][j], matrix[j][i]);
-            }
-        }
+       for(int i = 0; i<n ; i++){
+        for(int j =0; j<i; j++){
+            int temp = matrix[j][i] ;
+            matrix[j][i] = matrix[i][j];
+            matrix[i][j] = temp;
+        } 
+       }
 
-        // Step 2: **Reverse** each row
-        // Use the std::reverse algorithm
-        for (int i = 0; i < n; ++i) {
-            std::reverse(matrix[i].begin(), matrix[i].end());
+       for(int i = 0; i<n ; i++){
+        int high = n-1;
+        int low = 0;
+        while(low < high){
+            int temp = matrix[i][low];
+            matrix[i][low] = matrix[i][high];
+            matrix[i][high] = temp;
+            high--;
+            low++;
         }
+       }
     }
 
 };
