@@ -44,3 +44,6 @@ public:
 // would need to make a helper functio to evaluate if actually k would wokr in h hours
 // TBH i will need to evaluate the number of hours (h) it would take with current k 
 // so if number of hours with current k is mroe than h we'd need to increase k
+
+// tc: O(nlogn) for each mid function of O(n) is called thas why
+// sc : O(1)
