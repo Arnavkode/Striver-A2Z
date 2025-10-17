@@ -3,7 +3,7 @@ public:
     int findSum(vector<int>& nums, int div){
         int sum = 0;
         for(int n : nums){
-            sum += ceil((double)n/div);
+            sum += (ceil((double)n/div));
 
         }
 
@@ -39,3 +39,10 @@ public:
 // need to find the smallest divisor such that the sum is less than or equal to the threshold
 
 // from examples the higher the divisor the lower the sum
+
+// TC: (nlogn)
+// SC: O(1)
+
+// further optimizatiions:
+// apaprently ceil uses runtime
+// so (n+div+1)/div
