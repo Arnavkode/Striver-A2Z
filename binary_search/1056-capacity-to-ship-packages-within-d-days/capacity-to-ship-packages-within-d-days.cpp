@@ -18,7 +18,7 @@ public:
     }
     int shipWithinDays(vector<int>& weights, int days) {
 
-
+        // low needs to be maximum of the weights, so that atleast all packages go by
         int low = 1;
         // te fastest we can get all the packages done is in one day, when the capacity is the sum of all weights
         int high = 0;
