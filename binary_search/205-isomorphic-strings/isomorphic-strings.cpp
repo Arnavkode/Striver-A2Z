@@ -1,29 +1,26 @@
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
-        unordered_map<char, char> check1;
-        unordered_map<char, char> check2;
-        int n = s.size();
-        // mapping s to t
-        for(int i = 0; i<n ; i++){
+        unordered_map<char, char> charMap;
 
-            if(check1.count(s[i]) == 0 && check2.count(t[i]) == 0){
-                check1[s[i]] = t[i];
-                check2[t[i]] = s[i];
-            }
-            else{
-                if(check1[s[i]] != t[i] || check2[t[i]] != s[i]){
+        for (int i = 0; i < s.length(); ++i) {
+            char sc = s[i];
+            char tc = t[i];
+
+            if (charMap.count(sc)) {
+                if (charMap[sc] != tc) {
                     return false;
                 }
+            } else {
+                for (auto& pair : charMap) {
+                    if (pair.second == tc) {
+                        return false;
+                    }
+                }
+                charMap[sc] = tc;
             }
         }
 
-        return true;
-
-        
+        return true;        
     }
 };
-// basically saying that once a letter maps to anothr it cant be changes
-// might use a map<char,char> for mapping
-// ill have to check both ways ig, is there any way to make one primary?
-
