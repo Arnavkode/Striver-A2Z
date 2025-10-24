@@ -18,9 +18,8 @@ public:
         while(!pq.empty()){
             pair p = pq.top();
             pq.pop();
-            for(int i =0 ; i<p.first; i++){
-                ans.append(1,p.second);
-            }
+                ans.append(p.first,p.second);
+            
 
         }
         return ans;
