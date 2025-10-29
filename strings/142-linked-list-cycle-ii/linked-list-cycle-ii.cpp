@@ -11,19 +11,27 @@ public:
     ListNode *detectCycle(ListNode *head) {
 
         if(head == nullptr) return nullptr; 
-        unordered_map<ListNode* ,int> mp;
+        ListNode* tort = head;
+        ListNode* hare = head;
 
-        ListNode* curr = head;
-
-        while(curr -> next != nullptr && mp[curr] == 0){
-            mp[curr]++;
-            curr = curr->next;
+        while(hare != nullptr && hare->next != nullptr){
+            hare = hare->next->next;
+            tort = tort->next;
+            if(hare == tort){
+                tort = head;
+                while(tort!=hare){
+                    tort = tort->next;
+                    hare = hare->next;
+                }
+                 return tort;
+            }
+            
         } 
-
-        if(curr->next == nullptr) return nullptr;
-        else return curr;
+       return nullptr;
         
     }
 };
 
 // this can easily be done by map method, but im sure there must be a better method
+// apparently this can also be done witht he help of tortoise hare but im confused how
+// READ the proof for the second part
