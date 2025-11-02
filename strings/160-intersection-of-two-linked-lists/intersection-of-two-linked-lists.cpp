@@ -10,6 +10,7 @@ class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
 
+    
     unordered_map<ListNode*, int> freq;
     ListNode* curr = headA;
     while(curr){
