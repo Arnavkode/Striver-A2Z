@@ -7,9 +7,10 @@ public:
             return;
         }
         s.push_back(nums[tries]);
-        helper(s, nums, tries + 1, ans);
+        helper(s, nums, ++tries, ans);
+        tries--;
         s.pop_back();
-        helper(s, nums, tries + 1, ans);
+        helper(s, nums,++tries , ans);
         return;
     }
     vector<vector<int>> subsets(vector<int>& nums) {
@@ -25,3 +26,7 @@ public:
 // aight
 // need to form a set of all subsets
 // decision is to take aor not to take, simple
+
+
+// TC = O(N) maximum depth
+// SC = O
