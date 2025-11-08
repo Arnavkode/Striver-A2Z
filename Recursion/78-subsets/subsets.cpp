@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    void helper(vector<int> s, vector<int>& nums,int tries,  vector<vector<int>>& ans){
+    void helper(vector<int>& s, vector<int>& nums,int tries,  vector<vector<int>>& ans){
         if(tries == nums.size()){
             ans.push_back(s);
             return;
