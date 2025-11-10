@@ -7,10 +7,9 @@ public:
             return;
         }
         s.push_back(nums[tries]);
-        helper(s, nums, ++tries, ans);
-        tries--;
+        helper(s, nums, tries + 1, ans);
         s.pop_back();
-        helper(s, nums,++tries , ans);
+        helper(s, nums, tries + 1, ans);
         return;
     }
     vector<vector<int>> subsets(vector<int>& nums) {
@@ -28,5 +27,5 @@ public:
 // decision is to take aor not to take, simple
 
 
-// TC = O(N) maximum depth
-// SC = O
+// TC = O(N * 2^n) ASSOCIATE WITH THE NUMBER OF BRANCHES, OR THE NUMBER OF LEAVES IN THE COMMON WORK PUT IN
+// SC = O(N) SINCE MAXIMUM DEPTH OF CALLSTACK IN N AND THE MAXIMUM SIZE OF THE HELPER VECTOR IS N;
