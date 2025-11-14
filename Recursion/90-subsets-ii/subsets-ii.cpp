@@ -34,3 +34,7 @@ sort(nums.begin(), nums.end());
 // must not contain duplicates??
 // ill need to find if the subset has been done or no?
 // could do a whole ass check after getting the ans once
+
+// the correct logic is sort the array, pick the current number
+// if the next is same just skip to the last
+// would ensure no duplicate arrays.
