@@ -2,16 +2,16 @@ class Solution {
 public:
     int repeatedNTimes(vector<int>& nums) {
 
-        int tgt = nums.size()/2;
-        unordered_map<int, int> map;
-
-        for(int n : nums){
-            map[n]++;
-            if(map[n] == tgt) return n;
+       unordered_set<int> seen;
+       for(int n : nums){
+        if(seen.count(n)){
+            return n;
         }
-        return -1;
-
+        else seen.insert(n);
+       }
+       return -1;
         
+
     }
 };
 
@@ -21,3 +21,6 @@ public:
 // return the element that is repeated n times 
 // used a freq map high runtime
 // could cut short
+// marginally beatt last runtime
+// maximum unqiue numbers n+1
+// use set apparently
