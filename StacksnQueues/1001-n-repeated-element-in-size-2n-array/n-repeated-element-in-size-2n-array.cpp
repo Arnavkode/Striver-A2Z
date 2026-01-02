@@ -7,12 +7,11 @@ public:
 
         for(int n : nums){
             map[n]++;
-        }
-
-        for(pair<int,int> p: map){
-            if( p.second == tgt) return p.first;
+            if(map[n] == tgt) return n;
         }
         return -1;
+
+        
     }
 };
 
@@ -20,3 +19,5 @@ public:
 // even sized array
 // nums contains n+1 elements
 // return the element that is repeated n times 
+// used a freq map high runtime
+// could cut short
