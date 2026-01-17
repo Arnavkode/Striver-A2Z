@@ -3,19 +3,19 @@ public:
     StockSpanner() {
         
     }
-    stack<int> stk;
-        vector<int> stocks;
+        stack<pair<int, int>> stk;
     
     int next(int price) {
         // find last greater element
-        stocks.push_back(price);
-        int i = stocks.size() -1;
-        int ans= 0;
-        while(i > -1 && stocks[i] <= price){
-            ans++;
-            i--;
+        int currentSpan = 1;
+        while(!stk.empty() && stk.top().first <= price){
+            currentSpan += stk.top().second;
+            stk.pop();
+
+
         }
-        return ans;
+        stk.push({price, currentSpan});
+        return currentSpan;
     }
 };
 
@@ -28,4 +28,5 @@ public:
 
 //  span = the number of days since the stock was last high than the current prices
 
-// 
+// brute force is ass
+// all i need to do is, check if the current element is less than the 
