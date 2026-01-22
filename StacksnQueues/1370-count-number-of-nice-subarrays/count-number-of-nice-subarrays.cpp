@@ -1,26 +1,31 @@
 class Solution {
 public:
-    int numberOfSubarrays(vector<int>& nums, int k) {
 
-        int left =0 ;
+    int helper(vector<int> & nums, int goal){
+        if(goal < 0) return 0;
+        int left= 0;
+        int ans= 0;
         int curr = 0;
-        int ans = 0;
-        unordered_map<int,int> odds; //number of adds against its frequency
-        odds[0] =1;
-        for(int right =0 ; right < nums.size() ; right++){
 
-            if(nums[right] %2  == 1) curr++;
-            odds[curr] ++;
+        for(int right = 0 ; right < nums.size() ; right++){
 
-            if(odds.count(curr - k)){
-                ans+= odds[curr - k];
-            }
-            
-            
+            curr += nums[right]%2;
+
+            while(curr > goal){
+                curr -= nums[left]%2;
+                left++;
+            } 
+
+            ans += (right- left +1);
 
         }
+
         return ans;
-        
+    }
+    int numberOfSubarrays(vector<int>& nums, int k) {
+
+    
+        return helper(nums, k) - helper(nums, k-1);
     }
 };
 
@@ -28,3 +33,6 @@ public:
 
 // /if i treat the number of odds as frequency? 
 // with the help of a hash map
+// prefix sum with the help of a hash map is kinda ass rntime wise
+// slidign window, atmost(k) - atmost( k -1)
+// kinda makes sense
