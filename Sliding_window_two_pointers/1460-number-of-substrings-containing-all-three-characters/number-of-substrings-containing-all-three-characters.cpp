@@ -1,7 +1,7 @@
 class Solution {
 public:
     int numberOfSubstrings(string s) {
-        unordered_map<char,int> freq; //store freq against char
+        vector<int> freq(100, 0); //store freq against char
 
         int left = 0;
         int ans = 0;
