@@ -11,6 +11,7 @@ public:
 
         for(int i = 0; i<= nums.size() - k; i++){
             ans = min ( ans , nums[i+k-1] - nums[i]);
+            // gettimng the max and min on each window
         }
         return ans;
 
