@@ -1,0 +1,20 @@
+class Solution {
+public:
+    char nextGreatestLetter(vector<char>& letters, char target) {
+
+        char ans = letters[0];
+
+        for(char c: letters){
+            if(c - 'a' > target - 'a'){
+                ans = c;
+                break;
+            }
+        }
+        
+        return ans;
+    }
+};
+// array already in a an ascending order
+// kinda gay
+
+// compare everything as integers
