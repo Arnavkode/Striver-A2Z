@@ -17,15 +17,17 @@ public:
         queue<TreeNode*> q;
         vector<vector<int>> ans;
 
-        if(root)q.push(root);
+        if (root)
+            q.push(root);
 
         while (!q.empty()) {
-            
+
             vector<int> level;
             int size = q.size();
-            for(int i =0 ; i< size ;i ++){
+            // simulates a level, clears all n level nodes, while adding n+1 level (their children)
+            for (int i = 0; i < size; i++) {
                 TreeNode* temp = q.front();
-            q.pop(); // the parent is popped
+                q.pop(); // the parent is popped
                 level.push_back(temp->val);
                 // children are pushed
                 if (temp->left)
