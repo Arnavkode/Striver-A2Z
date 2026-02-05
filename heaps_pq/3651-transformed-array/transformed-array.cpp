@@ -1,8 +1,6 @@
 class Solution {
 public:
     vector<int> constructTransformedArray(vector<int>& nums) {
-        cin.tie();
-        ios::sync_with_stdio(0);
         int n = nums.size();
         vector<int> res(n);
 
