@@ -23,14 +23,17 @@ public:
         fillArray(node->right);
         return;
     }
-    TreeNode* buildTree(int left, int right){
+    TreeNode* buildTree(vector<int> &nodes, int left, int right){
         if(left > right) return nullptr;
         int mid = (left + right)/2;
         TreeNode* root = new TreeNode(nodes[mid]);
-        root->left = buildTree(left, mid-1);
-        root->right = buildTree(mid+1, right);
+        root->left = buildTree(nodes, left, mid-1);
+        root->right = buildTree(nodes, mid+1, right);
         return root;
     }
+
+    // Since buildTree always splits the array in half, the recursion depth will only 
+    // go as deep as the height of a balanced tree, which is $\log N$
     TreeNode* balanceBST(TreeNode* root) {
         if(root == nullptr)return root;
         fillArray(root);
@@ -38,7 +41,7 @@ public:
         // sort(nodes.begin(), nodes.end());
         // not needed as traversing in inorder is already sorted in binary search trees
 
-        return buildTree(0, nodes.size()  -1);
+        return buildTree(nodes, 0, nodes.size()  -1);
     }
 };
 
