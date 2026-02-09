@@ -35,11 +35,10 @@ public:
         if(root == nullptr)return root;
         fillArray(root);
         
-        sort(nodes.begin(), nodes.end());
+        // sort(nodes.begin(), nodes.end());
+        // not needed as traversing in inorder is already sorted in binary search trees
 
         return buildTree(nodes, 0, nodes.size()  -1);
-
-
     }
 };
 
