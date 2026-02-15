@@ -1,53 +1,35 @@
 class Solution {
 public:
     string addBinary(string a, string b) {
-        int size = max(a.size(), b.size());
-        string ans;
-        while(a.size() > b.size()){
-            b.insert(0,1, '0');
-        }
-        while(b.size() > a.size()){
-            a.insert(0,1,'0');
-        }
+        string ans = "";
+        int i = a.length() - 1;
+        int j = b.length() - 1;
         int carry = 0;
-        for(int i =size-1; i >-1; i--){
-            if(a[i] == '1' && b[i] == '1' && carry == 1){
-                ans.insert(0,1,'1');
-                carry  = 1;
+
+        // Iterate while there are digits left in a, b, OR there is a carry
+        while(i >= 0 || j >= 0 || carry == 1) {
+            int sum = carry;
+            
+            // Add bit from a if available
+            if(i >= 0) {
+                sum += a[i] - '0'; // Convert char '1' to int 1
+                i--;
             }
-            else if(a[i] == '1' && b[i] == '1' && carry == 0){
-                ans.insert(0,1,'0');
-                carry = 1;
+            
+            // Add bit from b if available
+            if(j >= 0) {
+                sum += b[j] - '0';
+                j--;
             }
-            else if(a[i] == '1' && b[i] == '0' && carry == 1){
-                ans.insert(0, 1,'0');
-                carry = 1;
-            }
-            else if(a[i] == '0' && b[i] == '1' && carry == 1){
-                ans.insert(0,1, '0');
-                carry = 1;
-            }
-            else if(a[i] == '1' && b[i] == '0' && carry == 0){
-                ans.insert(0,1, '1');
-                carry = 0;
-            }
-            else if(a[i] == '0' && b[i] == '1' && carry == 0){
-                ans.insert(0,1, '1');
-                carry = 0;
-            }
-            else if(a[i] == '0' && b[i] == '0' && carry == 1){
-                ans.insert(0,1, '1');
-                carry = 0;
-            }
-            else if(a[i] == '0' && b[i] == '0' && carry == 0){
-                ans.insert(0,1, '0');
-                carry = 0;
-            }
+
+            // If sum is 2 (1+1), we append '0' and carry 1
+            // If sum is 3 (1+1+1), we append '1' and carry 1
+            ans += to_string(sum % 2);
+            carry = sum / 2;
         }
-        if(carry == 1){
-            ans.insert(0,1,'1');
-        }
+
+        // The answer is currently backwards because we appended
+        reverse(ans.begin(), ans.end());
         return ans;
-        
     }
 };
