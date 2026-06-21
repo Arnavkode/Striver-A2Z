@@ -1,21 +1,41 @@
 class Solution {
 public:
     int maxIceCream(vector<int>& costs, int coins) {
-        sort(costs.begin(), costs.end());
+        
+        vector<int> freq(100001);
+
+        for(int i = 0 ;i < costs.size() ; i++){
+            freq[costs[i]]++;
+        }
+
+        vector<int> sorted(costs.size());
+        int sum = 0;
+        for(int  i =0 ; i < freq.size() ; i++){
+            if(freq[i] == 0) continue;
+            sum += freq[i];
+            sorted[sum - 1] = i;
+        }
+        int left = 0;
+
+        for(int right = 0 ; right < sorted.size() ; right ++){
+            if(sorted[right] != 0){
+                for(int j = left ; j < right; j++){
+                    sorted[j] = sorted[right];
+                }
+                left = right + 1;
+            }
+        }
+
+
         int bought = 0;
-        for(int i =0 ; i< costs.size(); i++){
-            if(coins >= costs[i]){
-                coins -= costs[i];
-                bought ++;
+
+        for(int  n : sorted){
+            if(coins >= n){
+                coins -= n;
+                bought++;
             }
         }
 
         return bought;
     }
 };
-
-// n ice creams bars
-// costs of lenght n
-// boy initially has coins to coins to spend
-// fuck is counting sort
-// boy wants to buy maximum ice creams
