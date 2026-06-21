@@ -3,9 +3,9 @@ public:
     int maxIceCream(vector<int>& costs, int coins) {
         sort(costs.begin(), costs.end());
         int bought = 0;
-        for(int n : costs){
-            if(coins >= n){
-                coins -=n;
+        for(int i =0 ; i< costs.size(); i++){
+            if(coins >= costs[i]){
+                coins -= costs[i];
                 bought ++;
             }
         }
