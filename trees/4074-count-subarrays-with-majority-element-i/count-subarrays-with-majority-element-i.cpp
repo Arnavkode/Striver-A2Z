@@ -1,6 +1,8 @@
 class Solution {
 public:
     int countMajoritySubarrays(vector<int>& nums, int target) {
+        ios::sync_with_stdio(false);
+        cin.tie(nullptr);
             int ans = 0;
 
         for(int i = 0 ; i < nums.size(); i++){
