@@ -78,3 +78,9 @@ public:
 
     }
 };
+
+// DSU to merge username indexes
+// a map <email, owner> to check if a specific mail has been seen before, if yes the current owner is the parent of the one being seen now
+// at the end store new email against their parent indexes
+// use set to maintain uniqueness
+// at the end store the formatted ans
