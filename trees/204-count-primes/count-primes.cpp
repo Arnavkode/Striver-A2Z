@@ -7,6 +7,7 @@ public:
         numbers[0] = 1;
         numbers[1] = 1;
         for(int i = 2 ;i  < numbers.size() ; i++){
+            if(numbers[i] == 1) continue;
             for(int j = i + i ; j < numbers.size() ; j += i){
                 numbers[j] = 1;
             }
