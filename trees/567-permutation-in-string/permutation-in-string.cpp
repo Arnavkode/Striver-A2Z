@@ -2,14 +2,18 @@ class Solution {
 public:
     bool checkInclusion(string s1, string s2) {
         if(s1.size() > s2.size()) return false;
-        sort(s1.begin(),s1.end());
+        vector<int> fre1(26, 0);
         int window = s1.size();
 
-        for (int i = 0; i + window <= s2.size(); i++) {
-            string temp = s2.substr(i, window);
-            sort(temp.begin(), temp.end());
+        for(char c : s1) fre1[(c - 'a')]++;
 
-            if (temp == s1) return true;
+        for (int i = 0; i + window <= s2.size(); i++) {
+        vector<int> fre2(26, 0);
+
+            string temp = s2.substr(i, window);
+            for(char c: temp) fre2[c - 'a']++;
+
+            if (fre2 == fre1) return true;
         }
 
         return false;
