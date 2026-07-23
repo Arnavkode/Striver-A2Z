@@ -5,7 +5,7 @@ public:
         vector<int> ans(nums.size());
 
         for(int i =nums.size() -1 ; i >= 0 ; i--){
-            while(!stk.empty() && stk.top() <= nums[i]) stk.pop();
+            while(!stk.empty() && stk.top() < nums[i]) stk.pop();
 
             stk.push(nums[i]);
         }
