@@ -1,3 +1,4 @@
-with singlenums AS(
-    SELECT num from MyNumbers  GROUP BY num HAVING COUNT(num) =1 
-) SELECT MAX(num) as num FROM singlenums;
+-- Write your PostgreSQL query statement below
+with freq AS(
+    SELECT num, COUNT(num) as fre FROM MyNumbers GROUP BY num
+) SELECT MAX(num) as num FROM freq WHERE fre = 1;
