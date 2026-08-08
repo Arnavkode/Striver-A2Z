@@ -1,0 +1,2 @@
+-- Write your PostgreSQL query statement below
+SELECT d.name as Department, e.name as Employee, e.salary as Salary FROM Employee e JOIN department d ON e.departmentId = d.id WHERE e.salary IN (SELECT DISTINCT salary FROM Employee WHERE departmentId = e.departmentId ORDER BY salary DESC LIMIT 3);
