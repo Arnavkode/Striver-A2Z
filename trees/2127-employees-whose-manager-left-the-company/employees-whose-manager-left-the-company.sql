@@ -1,0 +1,2 @@
+-- Write your PostgreSQL query statement below
+SELECT e.employee_id FROM Employees e WHERE e.salary < 30000 AND e.manager_id IS NOT NULL AND (SELECT employee_id FROM Employees WHERE employee_id = e.manager_id) IS NULL ORDER BY e.employee_id;
